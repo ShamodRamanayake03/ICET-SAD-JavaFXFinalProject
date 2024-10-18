@@ -1,6 +1,5 @@
 package controller.employee;
 
-import com.mysql.cj.xdevapi.Warning;
 import entity.EmployeeEntity;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -50,7 +49,6 @@ public class EmployeeManagementFormController {
     void initialize() {
 
         colId.setCellValueFactory(new PropertyValueFactory<>("id"));
-
         colCompany.setCellValueFactory(new PropertyValueFactory<>("company"));
         colEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
         colName.setCellValueFactory(new PropertyValueFactory<>("name"));

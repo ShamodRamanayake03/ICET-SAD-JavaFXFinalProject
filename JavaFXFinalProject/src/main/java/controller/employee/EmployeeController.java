@@ -17,17 +17,17 @@ public class EmployeeController implements EmployeeService {
 		Session session = HibernateUtil.getSession();
 		Transaction transaction = null;
 		try {
-			transaction = session.beginTransaction();  // Start transaction
-			session.save(employee);  // Persist employee entity
-			transaction.commit();  // Commit transaction
-			isSuccess = true;  // Set success flag
+			transaction = session.beginTransaction();
+			session.save(employee);
+			transaction.commit();
+			isSuccess = true;
 			showAlert(AlertType.INFORMATION, "Success", "Employee saved successfully.");
 		} catch (Exception e) {
-			if (transaction != null) transaction.rollback();  // Rollback on error
+			if (transaction != null) transaction.rollback();
 			e.printStackTrace();
 			showAlert(AlertType.ERROR, "Error", "Failed to save employee.");
 		} finally {
-			session.close();  // Ensure session is closed
+			session.close();
 		}
 		return isSuccess;
 	}
@@ -37,17 +37,17 @@ public class EmployeeController implements EmployeeService {
 		Session session = HibernateUtil.getSession();
 		Transaction transaction = null;
 		try {
-			transaction = session.beginTransaction();  // Start transaction
-			session.update(employee);  // Update employee entity
-			transaction.commit();  // Commit transaction
-			isSuccess = true;  // Set success flag
+			transaction = session.beginTransaction();
+			session.update(employee);
+			transaction.commit();
+			isSuccess = true;
 			showAlert(AlertType.INFORMATION, "Success", "Employee updated successfully.");
 		} catch (Exception e) {
-			if (transaction != null) transaction.rollback();  // Rollback on error
+			if (transaction != null) transaction.rollback();
 			e.printStackTrace();
 			showAlert(AlertType.ERROR, "Error", "Failed to update employee.");
 		} finally {
-			session.close();  // Ensure session is closed
+			session.close();
 		}
 		return isSuccess;
 	}
@@ -59,12 +59,12 @@ public class EmployeeController implements EmployeeService {
 
 
 		try {
-			transaction = session.beginTransaction();  // Start transaction
-			EmployeeEntity employee = session.get(EmployeeEntity.class, id);  // Get employee by ID
+			transaction = session.beginTransaction();
+			EmployeeEntity employee = session.get(EmployeeEntity.class, id);
 			if (employee != null) {
-				session.delete(employee);  // Delete employee
-				transaction.commit();  // Commit transaction
-				isSuccess = true;  // Set success flag
+				session.delete(employee);
+				transaction.commit();
+				isSuccess = true;
 				showAlert(AlertType.INFORMATION, "Success", "Employee deleted successfully.");
 			} else {
 				showAlert(AlertType.WARNING, "Warning", "Employee not found with ID: " + id);
@@ -74,7 +74,7 @@ public class EmployeeController implements EmployeeService {
 			e.printStackTrace();
 			showAlert(AlertType.ERROR, "Error", "Failed to delete employee.");
 		} finally {
-			session.close();  // Ensure session is closed
+			session.close();
 		}
 		return isSuccess;
 	}
@@ -85,7 +85,7 @@ public class EmployeeController implements EmployeeService {
 		EmployeeEntity employee = null;
 
 		try {
-			employee = session.get(EmployeeEntity.class, id);  // Get employee by ID
+			employee = session.get(EmployeeEntity.class, id);
 			if (employee == null) {
 				showAlert(AlertType.WARNING, "Warning", "No employee found with ID: " + id);
 			}
@@ -93,7 +93,7 @@ public class EmployeeController implements EmployeeService {
 			e.printStackTrace();
 			showAlert(AlertType.ERROR, "Error", "Failed to retrieve employee.");
 		} finally {
-			session.close();  // Ensure session is closed
+			session.close();
 		}
 		return employee;
 	}
@@ -104,21 +104,21 @@ public class EmployeeController implements EmployeeService {
 		List<EmployeeEntity> employees = null;
 
 		try {
-			employees = session.createQuery("from EmployeeEntity", EmployeeEntity.class).list();  // Fetch all employees
+			employees = session.createQuery("from EmployeeEntity", EmployeeEntity.class).list();
 		} catch (Exception e) {
 			e.printStackTrace();
 			showAlert(AlertType.ERROR, "Error", "Failed to load employees.");
 		} finally {
-			session.close();  // Ensure session is closed
+			session.close();
 		}
 		return employees;
 	}
 
-	// Helper method to show alert messages
+
 	private void showAlert(AlertType alertType, String title, String message) {
 		Alert alert = new Alert(alertType);
 		alert.setTitle(title);
-		alert.setHeaderText(null);  // No header
+		alert.setHeaderText(null);
 		alert.setContentText(message);
 		alert.showAndWait();
 	}

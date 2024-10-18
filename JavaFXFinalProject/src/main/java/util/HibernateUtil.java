@@ -1,6 +1,7 @@
 package util;
 
 import entity.EmployeeEntity;
+import entity.SupplierEntity;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.Metadata;
@@ -23,6 +24,7 @@ public class HibernateUtil {
             // Create MetadataSources
             Metadata metadata = new MetadataSources(registry)
                     .addAnnotatedClass(EmployeeEntity.class)
+                    .addAnnotatedClass(SupplierEntity.class)
                     .getMetadataBuilder()
                     .applyImplicitNamingStrategy(ImplicitNamingStrategyJpaCompliantImpl.INSTANCE)
                     .build();
