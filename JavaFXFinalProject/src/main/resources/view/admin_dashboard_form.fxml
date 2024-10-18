@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="527.0" prefWidth="766.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.user.AdminDashboardFormController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#3742fa" height="88.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="766.0" />
+      <Label layoutX="225.0" layoutY="17.0" prefHeight="22.0" prefWidth="316.0" text="Admin Dashboard" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="36.0" />
+         </font>
+      </Label>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="439.0" layoutX="7.0" layoutY="88.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="766.0" />
+      <JFXButton layoutX="26.0" layoutY="113.0" onAction="#btnUserManagementFormOnAction" prefHeight="63.0" prefWidth="269.0" style="-fx-background-color: #3742fa;" text="User Management" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="455.0" layoutY="113.0" onAction="#btnProductManagementFormOnAction" prefHeight="63.0" prefWidth="270.0" style="-fx-background-color: #3742fa;" text="Product Management" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="25.0" layoutY="222.0" onAction="#btnSupplierManagementFormOnAction" prefHeight="63.0" prefWidth="270.0" style="-fx-background-color: #3742fa;" text="Supplier Management" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="455.0" layoutY="222.0" onAction="#btnEmployeeManagementFormOnAction" prefHeight="63.0" prefWidth="270.0" style="-fx-background-color: #3742fa;" text="Employee Management" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="25.0" layoutY="334.0" onAction="#btnOrderManagementFormOnAction" prefHeight="63.0" prefWidth="270.0" style="-fx-background-color: #3742fa;" text="Order Management" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="455.0" layoutY="334.0" onAction="#btnReportManagementFormOnAction" prefHeight="63.0" prefWidth="270.0" style="-fx-background-color: #3742fa;" text="Report Management" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="297.0" layoutY="435.0" onAction="#btnExitOnAction" prefHeight="63.0" prefWidth="158.0" style="-fx-background-color: #3742fa;" text="Exit" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </JFXButton>
+   </children>
+</AnchorPane>
