@@ -12,5 +12,6 @@ public class Starter extends Application {
     public void start(Stage primaryStage) throws Exception {
         primaryStage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/admin_dashboard_form.fxml"))));
         primaryStage.show();
+        primaryStage.setResizable(false);
     }
 }
