@@ -101,7 +101,7 @@ public class ProductManagementFormController {
                     txtQty.setText(String.valueOf(selectedProduct.getQuantity()));
                     txtImageLocation.setText(selectedProduct.getImage());
 
-                    // Load and display the image
+
                     loadImage(selectedProduct.getImage());
                 }
             }
@@ -175,7 +175,7 @@ public class ProductManagementFormController {
             txtQty.setText(String.valueOf(product.getQuantity()));
             txtImageLocation.setText(product.getImage());
 
-            // Load and display the image
+
             loadImage(product.getImage());
         } else {
             System.out.println("Product not found with ID: " + id);
@@ -184,7 +184,7 @@ public class ProductManagementFormController {
             txtPrize.clear();
             txtQty.clear();
             txtImageLocation.clear();
-            imageViewProduct.setImage(null); // Clear the image view
+            imageViewProduct.setImage(null);
         }
     }
 
