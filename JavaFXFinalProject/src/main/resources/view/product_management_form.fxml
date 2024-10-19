@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="603.0" prefWidth="1362.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.product.ProductManagementFormController">
+   <children>
+      <AnchorPane layoutX="-7.0" prefHeight="599.0" prefWidth="1411.0" style="-fx-background-color: white;">
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#3742fa" height="88.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1411.0" />
+            <Label layoutX="373.0" layoutY="17.0" prefHeight="54.0" prefWidth="509.0" text="Product Management Form" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="36.0" />
+               </font>
+            </Label>
+            <JFXButton layoutX="67.0" layoutY="525.0" onAction="#btnSearchOnAction" prefHeight="27.0" prefWidth="126.0" style="-fx-background-color: #3742fa;" text="Search" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </JFXButton>
+            <JFXTextField fx:id="txtId" alignment="CENTER" layoutX="67.0" layoutY="221.0" prefHeight="48.0" prefWidth="252.0" promptText="ID">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField fx:id="txtName" alignment="CENTER" layoutX="439.0" layoutY="221.0" prefHeight="48.0" prefWidth="252.0" promptText="Name">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField fx:id="txtSize" alignment="CENTER" layoutX="439.0" layoutY="298.0" prefHeight="48.0" prefWidth="252.0" promptText="Size">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField fx:id="txtPrize" alignment="CENTER" layoutX="67.0" layoutY="384.0" prefHeight="48.0" prefWidth="252.0" promptText="Price">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </JFXTextField>
+            <JFXButton layoutX="223.0" layoutY="525.0" onAction="#btnDeleteOnAction" prefHeight="27.0" prefWidth="126.0" style="-fx-background-color: #3742fa;" text="Delete" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </JFXButton>
+            <JFXButton layoutX="387.0" layoutY="525.0" onAction="#btnUpdateOnAction" prefHeight="27.0" prefWidth="126.0" style="-fx-background-color: #3742fa;" text="Update" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </JFXButton>
+            <JFXButton layoutX="565.0" layoutY="525.0" onAction="#btnAddOnAction" prefHeight="27.0" prefWidth="126.0" style="-fx-background-color: #3742fa;" text="Add" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </JFXButton>
+            <JFXButton layoutX="1228.0" layoutY="525.0" onAction="#btnReloadOnAction" prefHeight="27.0" prefWidth="126.0" style="-fx-background-color: #3742fa;" text="Reload" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </JFXButton>
+            <ComboBox fx:id="cmbCategory" layoutX="67.0" layoutY="298.0" prefHeight="48.0" prefWidth="252.0" promptText="Category" />
+            <JFXTextField fx:id="txtQty" alignment="CENTER" layoutX="439.0" layoutY="384.0" prefHeight="48.0" prefWidth="252.0" promptText="Quantity Available">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField fx:id="txtImageLocation" alignment="CENTER" layoutX="73.0" layoutY="458.0" prefHeight="48.0" prefWidth="616.0" promptText="Image Location">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </JFXTextField>
+            <ImageView fx:id="imageViewProduct" fitHeight="124.0" fitWidth="330.0" layoutX="216.0" layoutY="97.0" pickOnBounds="true" />
+            <TableView fx:id="tblProducts" layoutX="740.0" layoutY="119.0" prefHeight="386.0" prefWidth="628.0">
+               <columns>
+                  <TableColumn fx:id="colId" prefWidth="52.799957275390625" text="ID" />
+                  <TableColumn fx:id="colName" prefWidth="153.6000213623047" text="Name" />
+                  <TableColumn fx:id="colCategory" minWidth="0.0" prefWidth="106.39996337890625" text="Category" />
+                  <TableColumn fx:id="colSize" minWidth="0.0" prefWidth="52.0" text="Size" />
+                  <TableColumn fx:id="colPrice" minWidth="0.0" prefWidth="84.0" text="Price(Rs)" />
+                  <TableColumn fx:id="colQty" minWidth="0.0" prefWidth="52.0" text="Qty" />
+                  <TableColumn fx:id="colImageLocation" minWidth="0.0" prefWidth="128.0" text="Image Loc" />
+               </columns>
+            </TableView>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

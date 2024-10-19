@@ -29,7 +29,14 @@ public class AdminDashboardFormController {
 
     @FXML
     void btnProductManagementFormOnAction(ActionEvent event) {
-
+        Stage primaryStage = new Stage();
+        try {
+            primaryStage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../../view/product_management_form.fxml"))));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        primaryStage.show();
+        primaryStage.setResizable(false);
     }
 
     @FXML

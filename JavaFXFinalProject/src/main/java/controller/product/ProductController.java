@@ -1,32 +1,30 @@
-package controller.supplier;
+package controller.product;
 
-import entity.SupplierEntity;
+import entity.ProductEntity;
+import javafx.scene.control.Alert;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import util.HibernateUtil;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class SupplierController implements SupplierService {
+public class ProductController implements ProductService {
     boolean isSuccess = false;
 
     @Override
-    public boolean saveSupplier(SupplierEntity supplier) {
+    public boolean saveProduct(ProductEntity product) {
         Session session = HibernateUtil.getSession();
         Transaction transaction = null;
         try {
             transaction = session.beginTransaction();
-            session.save(supplier);
+            session.save(product);
             transaction.commit();
             isSuccess = true;
-            showAlert(Alert.AlertType.INFORMATION, "Success", "supplier saved successfully.");
+            showAlert(Alert.AlertType.INFORMATION, "Success", "Product saved successfully.");
         } catch (Exception e) {
             if (transaction != null) transaction.rollback();
             e.printStackTrace();
-            showAlert(Alert.AlertType.ERROR, "Error", "Failed to save supplier.");
+            showAlert(Alert.AlertType.ERROR, "Error", "Failed to save product.");
         } finally {
             session.close();
         }
@@ -34,19 +32,19 @@ public class SupplierController implements SupplierService {
     }
 
     @Override
-    public boolean updateSupplier(SupplierEntity supplier) {
+    public boolean updateProduct(ProductEntity product) {
         Session session = HibernateUtil.getSession();
         Transaction transaction = null;
         try {
             transaction = session.beginTransaction();
-            session.update(supplier);
+            session.update(product);
             transaction.commit();
             isSuccess = true;
-            showAlert(Alert.AlertType.INFORMATION, "Success", "Supplier updated successfully.");
+            showAlert(Alert.AlertType.INFORMATION, "Success", "Product updated successfully.");
         } catch (Exception e) {
             if (transaction != null) transaction.rollback();
             e.printStackTrace();
-            showAlert(Alert.AlertType.ERROR, "Error", "Failed to update supplier.");
+            showAlert(Alert.AlertType.ERROR, "Error", "Failed to update product.");
         } finally {
             session.close();
         }
@@ -54,26 +52,26 @@ public class SupplierController implements SupplierService {
     }
 
     @Override
-    public boolean deleteSupplier(String id) {
+    public boolean deleteProduct(String id) {
         Session session = HibernateUtil.getSession();
         Transaction transaction = null;
 
 
         try {
             transaction = session.beginTransaction();
-            SupplierEntity supplier = session.get(SupplierEntity.class, id);
-            if (supplier != null) {
-                session.delete(supplier);
+            ProductEntity product = session.get(ProductEntity.class, id);
+            if (product != null) {
+                session.delete(product);
                 transaction.commit();
                 isSuccess = true;
-                showAlert(Alert.AlertType.INFORMATION, "Success", "Supplier deleted successfully.");
+                showAlert(Alert.AlertType.INFORMATION, "Success", "Product deleted successfully.");
             } else {
-                showAlert(Alert.AlertType.WARNING, "Warning", "Supplier not found with ID: " + id);
+                showAlert(Alert.AlertType.WARNING, "Warning", "Product not found with ID: " + id);
             }
         } catch (Exception e) {
             if (transaction != null) transaction.rollback();  // Rollback on error
             e.printStackTrace();
-            showAlert(Alert.AlertType.ERROR, "Error", "Failed to delete supplier.");
+            showAlert(Alert.AlertType.ERROR, "Error", "Failed to delete product.");
         } finally {
             session.close();
         }
@@ -81,42 +79,39 @@ public class SupplierController implements SupplierService {
     }
 
     @Override
-    public SupplierEntity getSupplierById(String id) {
+    public ProductEntity getProductById(String id) {
         Session session = HibernateUtil.getSession();
-        SupplierEntity supplier = null;
+        ProductEntity product = null;
 
         try {
-            supplier = session.get(SupplierEntity.class, id);
-            if (supplier == null) {
-                showAlert(Alert.AlertType.WARNING, "Warning", "No supplier found with ID: " + id);
+            product = session.get(ProductEntity.class, id);
+            if (product == null) {
+                showAlert(Alert.AlertType.WARNING, "Warning", "No product found with ID: " + id);
             }
         } catch (Exception e) {
             e.printStackTrace();
-            showAlert(Alert.AlertType.ERROR, "Error", "Failed to retrieve supplier.");
+            showAlert(Alert.AlertType.ERROR, "Error", "Failed to retrieve product.");
         } finally {
             session.close();
         }
-        return supplier;
+        return product;
     }
 
     @Override
-    public List<SupplierEntity> getAllSuppliers() {
+    public List<ProductEntity> getAllProducts() {
         Session session = HibernateUtil.getSession();
-        List<SupplierEntity> suppliers = new ArrayList<>();
+        List<ProductEntity> products = null;
 
         try {
-            suppliers = session.createQuery("from SupplierEntity", SupplierEntity.class).list();
+            products = session.createQuery("from ProductEntity", ProductEntity.class).list();
         } catch (Exception e) {
             e.printStackTrace();
-
+            showAlert(Alert.AlertType.ERROR, "Error", "Failed to load products.");
         } finally {
-            if (session != null) {
-                session.close();
-            }
+            session.close();
         }
-        return suppliers;
+        return products;
     }
-
 
 
     private void showAlert(Alert.AlertType alertType, String title, String message) {
