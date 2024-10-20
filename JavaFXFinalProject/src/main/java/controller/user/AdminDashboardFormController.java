@@ -26,7 +26,7 @@ public class AdminDashboardFormController {
     void btnOrderManagementFormOnAction(ActionEvent event) {
         Stage primaryStage = new Stage();
         try {
-            primaryStage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../../view/employee_management_form.fxml"))));
+            primaryStage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../../view/order_management_form.fxml"))));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

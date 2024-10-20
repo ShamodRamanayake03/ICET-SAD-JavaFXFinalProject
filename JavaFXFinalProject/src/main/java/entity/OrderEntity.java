@@ -16,10 +16,9 @@ import lombok.ToString;
 @Entity
 public class OrderEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private String name;
+    //@GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long orderId;
+    private String custName;
     private String date;
     private Double tPrice;
-
 }

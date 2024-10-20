@@ -1,9 +1,11 @@
 package controller.order;
 
-import com.jfoenix.controls.JFXTextField;
+import com.jfoenix.controls.JFXTextField;  // Use this if you're using JFoenix, otherwise, use TextField
 import controller.product.ProductController;
 import entity.OrderDetailEntity;
 import entity.ProductEntity;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -13,13 +15,17 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.value.ObservableValue;
+import javafx.util.Duration;
 
+import java.awt.*;
 import java.util.List;
 
 public class PlaceOrderFormController {
 
     @FXML
-    private JFXTextField txtItemName, txtQty, txtPrice, txtTotalPrice, txtItemNo;
+    private JFXTextField txtItemName, txtQty, txtPrice, txtTotalPrice, txtItemNo, txtOrderId, txtId;
 
     @FXML
     private TableView<OrderDetailEntity> tblCart;
@@ -40,23 +46,24 @@ public class PlaceOrderFormController {
     private TableColumn<OrderDetailEntity, Double> colNPrice;
 
     private final OrderDetailController orderDetailController = new OrderDetailController();
-    private final ProductController productController = new ProductController(); // Product controller instance
+    private final ProductController productController = new ProductController();
+    private Timeline typingTimer;
 
     @FXML
     public void initialize() {
+        // Set up table columns
         colItemId.setCellValueFactory(new PropertyValueFactory<>("id"));
         colItemName.setCellValueFactory(new PropertyValueFactory<>("itemName"));
         colQty.setCellValueFactory(new PropertyValueFactory<>("qty"));
         colUPrice.setCellValueFactory(new PropertyValueFactory<>("price"));
 
-        // Calculate nPrice dynamically
         colNPrice.setCellValueFactory(cellData -> {
             double qty = cellData.getValue().getQty();
             double price = cellData.getValue().getPrice();
-            return new javafx.beans.property.SimpleDoubleProperty(qty * price).asObject();
+            return new SimpleDoubleProperty(qty * price).asObject();
         });
 
-        // Add listener for selecting items in the cart
+        // Set table item selection event
         tblCart.setOnMouseClicked(event -> {
             if (event.getClickCount() == 1) {
                 OrderDetailEntity selectedOrderDetail = tblCart.getSelectionModel().getSelectedItem();
@@ -69,7 +76,6 @@ public class PlaceOrderFormController {
             }
         });
 
-        // Add key listener to fetch product details on key release
         txtItemNo.setOnKeyReleased(this::onItemNoKeyReleased);
 
         loadCartTable();
@@ -97,18 +103,29 @@ public class PlaceOrderFormController {
         alert.showAndWait();
     }
 
-    // Event handler to fetch product details when item number is typed
     private void onItemNoKeyReleased(KeyEvent event) {
-        String itemNo = txtItemNo.getText();
-        if (!itemNo.isEmpty()) {
-            ProductEntity product = productController.getProductById(itemNo);
-            if (product != null) {
-                txtItemName.setText(product.getName()); // Assuming 'name' is the field in ProductEntity
-                txtPrice.setText(String.valueOf(product.getPrice())); // Assuming 'unitPrice' is in ProductEntity
-            } else {
-                clearProductFields(); // Clear fields if no product is found
-            }
+        // Stop any existing timer
+        if (typingTimer != null) {
+            typingTimer.stop();
         }
+
+        String itemNo = txtItemNo.getText();
+        // Start a new timer for 300 milliseconds
+        typingTimer = new Timeline(new KeyFrame(Duration.millis(300), e -> {
+            if (!itemNo.isEmpty()) {
+                ProductEntity product = productController.getProductById(itemNo);
+                if (product != null) {
+                    txtItemName.setText(product.getName());
+                    txtPrice.setText(String.valueOf(product.getPrice()));
+                } else {
+                    clearProductFields();
+                }
+            } else {
+                clearProductFields();
+            }
+        }));
+        typingTimer.setCycleCount(1); // Ensure it runs only once
+        typingTimer.play();
     }
 
     private void clearProductFields() {
@@ -155,14 +172,17 @@ public class PlaceOrderFormController {
     }
 
     public void btnAddOnAction(ActionEvent actionEvent) {
-        OrderDetailEntity orderDetail = new OrderDetailEntity();
-        orderDetail.setItemName(txtItemName.getText());
-        orderDetail.setQty(Double.valueOf(txtQty.getText()));
-        orderDetail.setPrice(Double.valueOf(txtPrice.getText()));
 
-        orderDetailController.saveOrderDetail(orderDetail);
-        loadCartTable();
-        clearFields();
+            OrderDetailEntity orderDetail = new OrderDetailEntity();
+            orderDetail.setItemName(txtItemName.getText());
+            orderDetail.setQty(Double.valueOf(txtQty.getText()));
+            orderDetail.setPrice(Double.valueOf(txtPrice.getText()));
+            orderDetail.setOrderNo(Long.valueOf(txtOrderId.getText()));
+
+            orderDetailController.saveOrderDetail(orderDetail);
+            loadCartTable();
+            clearFields();
+
     }
 
     public void btnReloadOnAction(ActionEvent actionEvent) {
@@ -170,15 +190,6 @@ public class PlaceOrderFormController {
     }
 
     public void btnPlaceOrderOnAction(ActionEvent actionEvent) {
-        ObservableList<OrderDetailEntity> orderDetails = tblCart.getItems();
-        double totalPrice = 0.0;
-
-        for (OrderDetailEntity orderDetail : orderDetails) {
-            double nPrice = orderDetail.getQty() * orderDetail.getPrice();
-            totalPrice += nPrice;
-        }
-
-        txtTotalPrice.setText(String.valueOf(totalPrice));
-        showAlert(Alert.AlertType.INFORMATION, "Order Placed", "Order placed successfully! Total Price: " + totalPrice);
+        // Order placement logic goes here
     }
 }

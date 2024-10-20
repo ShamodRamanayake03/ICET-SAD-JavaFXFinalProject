@@ -56,11 +56,11 @@
             </JFXButton>
             <TableView fx:id="tblCart" layoutX="67.0" layoutY="385.0" prefHeight="314.0" prefWidth="694.0">
                <columns>
-                  <TableColumn fx:id="colItemId" prefWidth="101.60000610351562" text="Item No" />
-                  <TableColumn fx:id="colItemName" minWidth="0.0" prefWidth="167.2000274658203" text="Item Name" />
-                  <TableColumn fx:id="colQty" minWidth="0.0" prefWidth="116.79998779296875" text="Qty" />
-                  <TableColumn fx:id="colUPrice" prefWidth="165.60003662109375" text="Unit Price" />
-                  <TableColumn fx:id="colNPrice" prefWidth="141.59991455078125" text="Price" />
+                  <TableColumn fx:id="colItemId" prefWidth="120.79998779296875" text="Item No" />
+                  <TableColumn fx:id="colItemName" minWidth="0.0" prefWidth="222.40000915527344" text="Item Name" />
+                  <TableColumn fx:id="colQty" minWidth="0.0" prefWidth="94.4000244140625" text="Qty" />
+                  <TableColumn fx:id="colUPrice" prefWidth="142.4000244140625" text="Unit Price" />
+                  <TableColumn fx:id="colNPrice" prefWidth="114.4000244140625" text="Price" />
                </columns>
             </TableView>
             <JFXButton layoutX="67.0" layoutY="321.0" onAction="#btnReloadOnAction" prefHeight="27.0" prefWidth="126.0" style="-fx-background-color: #3742fa;" text="Reload" textFill="WHITE">
@@ -88,6 +88,11 @@
                   <Font size="18.0" />
                </font>
             </JFXButton>
+            <JFXTextField fx:id="txtId" alignment="CENTER" layoutX="99.0" layoutY="251.0" prefHeight="48.0" prefWidth="252.0" promptText="ID" visible="false">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </JFXTextField>
          </children>
       </AnchorPane>
    </children>

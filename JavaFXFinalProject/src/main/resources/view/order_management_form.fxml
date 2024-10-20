@@ -9,60 +9,44 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.order.OrderManagementFormController">
    <children>
-      <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="400.0" prefWidth="600.0">
+      <AnchorPane layoutX="5.0" prefHeight="400.0" prefWidth="600.0">
          <children>
-            <AnchorPane layoutX="-10.0" prefHeight="794.0" prefWidth="805.0" style="-fx-background-color: white;">
+            <AnchorPane layoutX="6.0" layoutY="8.0" prefHeight="732.0" prefWidth="806.0" style="-fx-background-color: white;">
                <children>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#3742fa" height="105.0" layoutX="-1.0" layoutY="-12.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="806.0" />
-                  <Label layoutX="204.0" layoutY="18.0" prefHeight="54.0" prefWidth="509.0" text="Order Management Form" textFill="WHITE">
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#3742fa" height="98.0" layoutX="-13.0" layoutY="-5.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="818.0" />
+                  <Label layoutX="144.0" layoutY="17.0" prefHeight="54.0" prefWidth="509.0" text="Order Management Form" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="36.0" />
                      </font>
                   </Label>
-                  <JFXButton layoutX="67.0" layoutY="321.0" onAction="#btnSearchOnAction" prefHeight="27.0" prefWidth="126.0" style="-fx-background-color: #3742fa;" text="Search" textFill="WHITE">
+                  <JFXButton layoutX="67.0" layoutY="199.0" onAction="#btnSearchOnAction" prefHeight="27.0" prefWidth="126.0" style="-fx-background-color: #3742fa;" text="Search" textFill="WHITE">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </JFXButton>
-                  <JFXTextField fx:id="txtId" alignment="CENTER" layoutX="67.0" layoutY="117.0" prefHeight="48.0" prefWidth="252.0" promptText="ID">
+                  <JFXTextField fx:id="txtId" alignment="CENTER" layoutX="67.0" layoutY="117.0" prefHeight="48.0" prefWidth="619.0" promptText="Enter ID to Search">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </JFXTextField>
-                  <JFXTextField fx:id="txtName" alignment="CENTER" layoutX="439.0" layoutY="117.0" prefHeight="48.0" prefWidth="252.0" promptText="Customer Name">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </JFXTextField>
-                  <JFXTextField fx:id="txtDate" alignment="CENTER" layoutX="67.0" layoutY="193.0" prefHeight="48.0" prefWidth="252.0" promptText="Date">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </JFXTextField>
-                  <JFXTextField fx:id="txtPrice" alignment="CENTER" layoutX="439.0" layoutY="193.0" prefHeight="48.0" prefWidth="252.0" promptText="Total Price">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </JFXTextField>
-                  <JFXButton layoutX="223.0" layoutY="321.0" onAction="#btnDeleteOnAction" prefHeight="27.0" prefWidth="126.0" style="-fx-background-color: #3742fa;" text="Delete" textFill="WHITE">
+                  <JFXButton layoutX="235.0" layoutY="199.0" onAction="#btnDeleteOnAction" prefHeight="27.0" prefWidth="126.0" style="-fx-background-color: #3742fa;" text="Delete" textFill="WHITE">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </JFXButton>
-                  <JFXButton layoutX="387.0" layoutY="321.0" onAction="#btnUpdateOnAction" prefHeight="27.0" prefWidth="126.0" style="-fx-background-color: #3742fa;" text="Update" textFill="WHITE">
+                  <JFXButton layoutX="399.0" layoutY="199.0" onAction="#btnUpdateOnAction" prefHeight="27.0" prefWidth="126.0" style="-fx-background-color: #3742fa;" text="Update" textFill="WHITE">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </JFXButton>
-                  <JFXButton layoutX="565.0" layoutY="321.0" onAction="#btnAddOnAction" prefHeight="27.0" prefWidth="126.0" style="-fx-background-color: #3742fa;" text="Add" textFill="WHITE">
+                  <JFXButton layoutX="564.0" layoutY="199.0" onAction="#btnAddOnAction" prefHeight="27.0" prefWidth="126.0" style="-fx-background-color: #3742fa;" text="Add" textFill="WHITE">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </JFXButton>
-                  <TableView fx:id="tblOrders" layoutX="67.0" layoutY="385.0" prefHeight="314.0" prefWidth="628.0">
+                  <TableView fx:id="tblOrders" layoutX="63.0" layoutY="267.0" prefHeight="314.0" prefWidth="628.0">
                      <columns>
                         <TableColumn fx:id="colId" prefWidth="80.79995727539062" text="ID" />
                         <TableColumn fx:id="colName" prefWidth="180.00006103515625" text="Customer Name" />
@@ -70,12 +54,7 @@
                         <TableColumn fx:id="colPrice" minWidth="0.0" prefWidth="184.800048828125" text="Total Price(Rs)" />
                      </columns>
                   </TableView>
-                  <JFXButton layoutX="578.0" layoutY="714.0" onAction="#btnReloadOnAction" prefHeight="27.0" prefWidth="126.0" style="-fx-background-color: #3742fa;" text="Reload" textFill="WHITE">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </JFXButton>
-                  <JFXButton layoutX="333.0" layoutY="265.0" onAction="#btnPlaceOrderOnAction" prefHeight="27.0" prefWidth="126.0" style="-fx-background-color: #3742fa;" text="Place Order" textFill="WHITE">
+                  <JFXButton layoutX="564.0" layoutY="608.0" onAction="#btnReloadOnAction" prefHeight="27.0" prefWidth="126.0" style="-fx-background-color: #3742fa;" text="Reload" textFill="WHITE">
                      <font>
                         <Font size="18.0" />
                      </font>

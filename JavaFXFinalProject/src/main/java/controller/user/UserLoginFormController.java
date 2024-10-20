@@ -1,5 +1,6 @@
 package controller.user;
 
+import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import entity.UserEntity;
 import javafx.animation.PauseTransition;
@@ -32,7 +33,7 @@ public class UserLoginFormController {
     private JFXTextField txtName;
 
     @FXML
-    private JFXTextField txtPassword;
+    private JFXPasswordField txtPassword;
 
     private UserController userRepository = new UserController();
     private PauseTransition pauseTransition;

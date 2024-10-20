@@ -21,4 +21,5 @@ public class OrderDetailEntity {
     private String itemName;
     private Double qty;
     private Double price;
+    private Long orderNo;
 }

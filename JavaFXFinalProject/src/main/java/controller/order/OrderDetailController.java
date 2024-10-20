@@ -1,8 +1,8 @@
-
 package controller.order;
 
 import entity.OrderDetailEntity;
 import javafx.scene.control.Alert;
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import util.HibernateUtil;
@@ -10,26 +10,26 @@ import util.HibernateUtil;
 import java.util.List;
 
 public class OrderDetailController {
-
+    boolean isSuccess = false;
     public boolean saveOrderDetail(OrderDetailEntity orderDetail) {
         Session session = HibernateUtil.getSession();
         Transaction transaction = null;
-        boolean isSuccess = false;
         try {
             transaction = session.beginTransaction();
             session.save(orderDetail);
             transaction.commit();
             isSuccess = true;
-            showAlert(Alert.AlertType.INFORMATION, "Success", "Order detail saved successfully.");
+            showAlert(Alert.AlertType.INFORMATION, "Success", "Employee saved successfully.");
         } catch (Exception e) {
             if (transaction != null) transaction.rollback();
             e.printStackTrace();
-            showAlert(Alert.AlertType.ERROR, "Error", "Failed to save order detail.");
+            showAlert(Alert.AlertType.ERROR, "Error", "Failed to save employee.");
         } finally {
             session.close();
         }
         return isSuccess;
     }
+
 
     public boolean updateOrderDetail(OrderDetailEntity orderDetail) {
         Session session = HibernateUtil.getSession();

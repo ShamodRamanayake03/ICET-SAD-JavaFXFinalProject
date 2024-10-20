@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXPasswordField?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
@@ -31,11 +32,10 @@
             <Font size="18.0" />
          </font>
       </JFXTextField>
-      <JFXTextField fx:id="txtPassword" alignment="CENTER" layoutX="132.0" layoutY="214.0" prefHeight="48.0" prefWidth="252.0" promptText="Password">
+      <ComboBox fx:id="cmbAccountType" layoutX="128.0" layoutY="273.0" prefHeight="40.0" prefWidth="260.0" promptText="Account Type" />
+      <JFXPasswordField fx:id="txtPassword" alignment="CENTER" layoutX="131.0" layoutY="221.0" prefHeight="40.0" prefWidth="260.0" promptText="Password">
          <font>
             <Font size="18.0" />
-         </font>
-      </JFXTextField>
-      <ComboBox fx:id="cmbAccountType" layoutX="128.0" layoutY="273.0" prefHeight="40.0" prefWidth="260.0" promptText="Account Type" />
+         </font></JFXPasswordField>
    </children>
 </AnchorPane>
